@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-} from 'react-native';
+import { StatusBar } from 'react-native';
 
 import Background from './components/Background';
 import Frame from './components/Frame';
