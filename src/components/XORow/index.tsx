@@ -3,8 +3,9 @@ import React from 'react';
 import { SymbolData } from '../../interfaces/GameData';
 
 import { FrameLine } from '../FrameLine';
+import XOComponent from '../XOComponent';
 
-import { Container, SymbolText } from './styles';
+import { Container } from './styles';
 
 interface XORowProps {
     data: Array<SymbolData>;
@@ -13,11 +14,11 @@ interface XORowProps {
 const XORow: React.FC<XORowProps> = ({ data }) => {
     return (
         <Container>
-            <SymbolText>{ data[0] }</SymbolText>
+            <XOComponent data={data[0]} />
             <FrameLine/>
-            <SymbolText>{ data[1] }</SymbolText>
+            <XOComponent data={data[1]} />
             <FrameLine/>
-            <SymbolText>{ data[2] }</SymbolText>
+            <XOComponent data={data[2]} />
         </Container>
     );
 }

@@ -12,7 +12,7 @@ export const GameProvider: React.FC = ({ children }) => {
     const [gameData, setGameData] = useState([
         [ SymbolData.X, SymbolData.X, SymbolData.X ],
         [ SymbolData.X, SymbolData.X, SymbolData.X ],
-        [ SymbolData.X, SymbolData.X, SymbolData.None ]
+        [ SymbolData.X, SymbolData.O, SymbolData.None ]
     ]);
 
     return (
