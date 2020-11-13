@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { SymbolData } from '../../interfaces/GameData';
-
 import { FrameLine } from '../FrameLine';
 import XOComponent from '../XOComponent';
 

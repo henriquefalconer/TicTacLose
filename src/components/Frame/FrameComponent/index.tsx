@@ -5,7 +5,7 @@ import XORow from '../XORow';
 
 import { Container } from './styles';
 
-const Frame: React.FC = () => {
+const FrameComponent: React.FC = () => {
     return (
         <Container>
             <XORow row={0} />
@@ -17,4 +17,4 @@ const Frame: React.FC = () => {
     );
 }
 
-export default Frame;
+export default FrameComponent;

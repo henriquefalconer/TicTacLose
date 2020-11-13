@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { useGame } from '../../hooks/useGame';
+import { useGame } from '../../../hooks/useGame';
 
-import { PositionId, SymbolData } from '../../interfaces/GameData';
+import { PositionId, SymbolData } from '../../../interfaces/GameData';
 
-import XImage from '../../assets/X.png';
-import OImage from '../../assets/O.png';
+import XImage from '../../../assets/X.png';
+import OImage from '../../../assets/O.png';
 
 import { ButtonContainer, SymbolImage } from './styles';
 
