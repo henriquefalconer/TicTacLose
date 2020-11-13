@@ -12,14 +12,14 @@ const GameContext = createContext<OrientationContextData>({} as OrientationConte
 export const GameProvider: React.FC = ({ children }) => {
     
     const [gameData, setGameData] = useState([
-        [ SymbolData.X, SymbolData.X, SymbolData.X ],
-        [ SymbolData.X, SymbolData.X, SymbolData.X ],
-        [ SymbolData.X, SymbolData.O, SymbolData.None ]
+        [ SymbolData.None, SymbolData.None, SymbolData.None ],
+        [ SymbolData.None, SymbolData.None, SymbolData.None ],
+        [ SymbolData.None, SymbolData.None, SymbolData.None ]
     ]);
 
     const setGameDataWithPosition = useCallback(
         (positionId: PositionId, newSymbolData: SymbolData) => {
-            
+
             const [row, column] = positionId;
             
             let gameDataCopy = [...gameData.map(row => [...row])];
