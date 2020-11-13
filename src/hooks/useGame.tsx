@@ -24,28 +24,30 @@ export const GameProvider: React.FC = ({ children }) => {
         (positionId: PositionId, newSymbolData: SymbolData) => {
             const [row, column] = positionId;
 
-            let gameDataCopy = [...gameData.map(row => [...row])];
+            setGameData(oldGameData => {
+                let gameDataCopy = [...oldGameData.map(row => [...row])];
+    
+                gameDataCopy[row][column] = newSymbolData;
 
-            gameDataCopy[row][column] = newSymbolData;
-
-            setGameData(gameDataCopy);
+                return gameDataCopy;
+            });
         },
-        [gameData, setGameData]
+        [setGameData]
     );
 
     const runNextStep = useCallback(
-        (positionId: PositionId) => {
-            const newSymbolData = currentPlayer === Player.Human
+        (positionId: PositionId, newPlayer: Player) => {
+            const newSymbolData = newPlayer === Player.Computer
                 ? SymbolData.X
                 : SymbolData.O;
 
             setGameDataWithPosition(positionId, newSymbolData);
 
-            setCurrentPlayer(
-                currentPlayer === Player.Human
-                    ? Player.Computer
-                    : Player.Human
-            );
+            setCurrentPlayer(newPlayer);
+
+            if (newPlayer === Player.Computer)
+                createComputerTimedResponse()
+
         },
         [currentPlayer, setGameDataWithPosition, setCurrentPlayer]
     );
@@ -56,22 +58,18 @@ export const GameProvider: React.FC = ({ children }) => {
 
             const positionIsEmpty = gameData[row][column] === SymbolData.None;
 
-            if (positionIsEmpty && currentPlayer === Player.Human) 
-                runNextStep(positionId);
+            if (positionIsEmpty && currentPlayer === Player.Human)
+                runNextStep(positionId, Player.Computer);
         },
         [gameData, currentPlayer, runNextStep]
     );
 
-    useEffect(
-        () => {
-            if (currentPlayer === Player.Computer) {
-                setTimeout(
-                    () => runNextStep([0, 0]), 
-                    2000
-                );
-            }
-        },
-        [currentPlayer, runNextStep]
+    const createComputerTimedResponse = useCallback(
+        () => setTimeout(
+            () => runNextStep([0, 0], Player.Human),
+            2000
+        ),
+        [runNextStep]
     );
 
     return (
