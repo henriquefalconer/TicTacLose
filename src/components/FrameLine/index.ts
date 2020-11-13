@@ -6,15 +6,10 @@ interface FrameLineProps {
 
 export const FrameLine = styled.View<FrameLineProps>`
     background-color: white;
+    align-self: stretch;
     ${
         props => props.horizontal 
-            ? css`
-                height: 2px;
-                align-self: stretch;
-            ` 
-            : css`
-                width: 2px;
-                align-self: stretch;
-            ` 
+            ? css` height: 2px; ` 
+            : css` width: 2px; `
     }
 `;
