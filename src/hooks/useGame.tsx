@@ -2,6 +2,8 @@ import React, { createContext, useCallback, useContext, useEffect, useState } fr
 
 import GameData, { Player, PositionId, SymbolData } from '../interfaces/GameData';
 
+import * as TicTacToeBrain from '../utilities/TicTacToeBrain';
+
 interface OrientationContextData {
     gameData: GameData;
     currentPlayer: Player;
@@ -25,7 +27,7 @@ export const GameProvider: React.FC = ({ children }) => {
             const [row, column] = positionId;
 
             setGameData(oldGameData => {
-                let gameDataCopy = [...oldGameData.map(row => [...row])];
+                let gameDataCopy = TicTacToeBrain.copyGameData(oldGameData);
     
                 gameDataCopy[row][column] = newSymbolData;
 
