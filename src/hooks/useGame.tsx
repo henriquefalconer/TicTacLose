@@ -22,7 +22,6 @@ export const GameProvider: React.FC = ({ children }) => {
 
     const setGameDataWithPosition = useCallback(
         (positionId: PositionId, newSymbolData: SymbolData) => {
-
             const [row, column] = positionId;
 
             let gameDataCopy = [...gameData.map(row => [...row])];
@@ -30,34 +29,49 @@ export const GameProvider: React.FC = ({ children }) => {
             gameDataCopy[row][column] = newSymbolData;
 
             setGameData(gameDataCopy);
-
         },
         [gameData, setGameData]
     );
 
+    const runNextStep = useCallback(
+        (positionId: PositionId) => {
+            const newSymbolData = currentPlayer === Player.Human
+                ? SymbolData.X
+                : SymbolData.O;
+
+            setGameDataWithPosition(positionId, newSymbolData);
+
+            setCurrentPlayer(
+                currentPlayer === Player.Human
+                    ? Player.Computer
+                    : Player.Human
+            );
+        },
+        [currentPlayer, setGameDataWithPosition, setCurrentPlayer]
+    );
+
     const onPressXOComponent = useCallback(
         (positionId: PositionId) => {
-
             const [row, column] = positionId;
 
             const positionIsEmpty = gameData[row][column] === SymbolData.None;
 
-            if (positionIsEmpty) {
-                const newSymbolData = currentPlayer === Player.Human
-                    ? SymbolData.X
-                    : SymbolData.O;
+            if (positionIsEmpty && currentPlayer === Player.Human) 
+                runNextStep(positionId);
+        },
+        [gameData, currentPlayer, runNextStep]
+    );
 
-                setGameDataWithPosition(positionId, newSymbolData);
-
-                setCurrentPlayer(
-                    currentPlayer === Player.Human
-                        ? Player.Computer
-                        : Player.Human
+    useEffect(
+        () => {
+            if (currentPlayer === Player.Computer) {
+                setTimeout(
+                    () => runNextStep([0, 0]), 
+                    2000
                 );
             }
-
         },
-        [gameData, currentPlayer, setGameDataWithPosition, setCurrentPlayer]
+        [currentPlayer, runNextStep]
     );
 
     return (
