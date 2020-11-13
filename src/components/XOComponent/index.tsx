@@ -1,29 +1,42 @@
 import React from 'react';
 
-import { SymbolData } from '../../interfaces/GameData';
+import { useGame } from '../../hooks/useGame';
+
+import { PositionId, SymbolData } from '../../interfaces/GameData';
 
 import XImage from '../../assets/X.png';
 import OImage from '../../assets/O.png';
 
-import { Container, SymbolImage } from './styles';
+import { ButtonContainer, SymbolImage } from './styles';
 
 interface XORowProps {
-    data: SymbolData;
+    positionId: PositionId;
 }
 
-const XOComponent: React.FC<XORowProps> = ({ data }) => {
+const XOComponent: React.FC<XORowProps> = ({ positionId }) => {
+
+    const { gameData, onPressXOComponent } = useGame();
+
+    const [row, column] = positionId;
+
+    const symbolData = gameData[row][column]
+
     return (
-        <Container>
+        <ButtonContainer
+            onPress={() => onPressXOComponent(positionId)}
+        >
             {
-                data !== SymbolData.None && <SymbolImage
-                    source={
-                        data === SymbolData.X
-                            ? XImage
-                            : OImage
-                    }
-                />
+                symbolData !== SymbolData.None && (
+                    <SymbolImage
+                        source={
+                            symbolData === SymbolData.X
+                                ? XImage
+                                : OImage
+                        }
+                    />
+                )
             }
-        </Container>
+        </ButtonContainer>
     );
 }
 

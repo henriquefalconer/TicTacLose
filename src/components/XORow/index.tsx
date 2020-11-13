@@ -8,17 +8,23 @@ import XOComponent from '../XOComponent';
 import { Container } from './styles';
 
 interface XORowProps {
-    data: Array<SymbolData>;
+    row: number;
 }
 
-const XORow: React.FC<XORowProps> = ({ data }) => {
+const XORow: React.FC<XORowProps> = ({ row }) => {
     return (
         <Container>
-            <XOComponent data={data[0]} />
+            <XOComponent 
+                positionId={[row, 0]} 
+            />
             <FrameLine/>
-            <XOComponent data={data[1]} />
+            <XOComponent 
+                positionId={[row, 1]} 
+            />
             <FrameLine/>
-            <XOComponent data={data[2]} />
+            <XOComponent 
+                positionId={[row, 2]} 
+            />
         </Container>
     );
 }
