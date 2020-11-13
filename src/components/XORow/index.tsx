@@ -1,17 +1,23 @@
 import React from 'react';
 
+import { SymbolData } from '../../interfaces/GameData';
+
 import { FrameLine } from '../FrameLine';
 
-import { Container, X, O } from './styles';
+import { Container, SymbolText } from './styles';
 
-const XORow: React.FC = () => {
+interface XORowProps {
+    data: Array<SymbolData>;
+}
+
+const XORow: React.FC<XORowProps> = ({ data }) => {
     return (
         <Container>
-            <X/>
+            <SymbolText>{ data[0] }</SymbolText>
             <FrameLine/>
-            <X/>
+            <SymbolText>{ data[1] }</SymbolText>
             <FrameLine/>
-            <O/>
+            <SymbolText>{ data[2] }</SymbolText>
         </Container>
     );
 }

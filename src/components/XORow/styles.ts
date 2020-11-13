@@ -7,18 +7,7 @@ export const Container = styled.View`
     flex-direction: row;
 `;
 
-export const X = styled.Text.attrs({
-    children: 'X'
-})`
-    color: white;
-    font-size: 100px;
-    flex: 1;
-    text-align: center;
-`;
-
-export const O = styled.Text.attrs({
-    children: 'O'
-})`
+export const SymbolText = styled.Text`
     color: white;
     font-size: 100px;
     flex: 1;

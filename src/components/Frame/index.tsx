@@ -1,18 +1,23 @@
 import React from 'react';
 
+import { useGame } from '../../hooks/useGame';
+
 import { FrameLine } from '../FrameLine';
 import XORow from '../XORow';
 
 import { Container } from './styles';
 
 const Frame: React.FC = () => {
+
+    const { gameData } = useGame();
+
     return (
         <Container>
-            <XORow />
+            <XORow data={gameData[0]} />
             <FrameLine horizontal />
-            <XORow />
+            <XORow data={gameData[1]} />
             <FrameLine horizontal />
-            <XORow />
+            <XORow data={gameData[2]} />
         </Container>
     );
 }
