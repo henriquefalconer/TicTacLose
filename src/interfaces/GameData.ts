@@ -6,6 +6,11 @@ export enum SymbolData {
 
 export type PositionId = [row: number, column: number];
 
+export enum Player {
+    Human = 'Human',
+    Computer = 'Computer'
+}
+
 type GameData = Array<Array<SymbolData>>;
 
 export default GameData;
