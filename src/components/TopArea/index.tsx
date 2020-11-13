@@ -8,15 +8,19 @@ import { Container, TurnText } from './styles';
 
 const TopArea: React.FC = () => {
 
-    const { currentPlayer } = useGame();
+    const { currentPlayer, whoWon } = useGame();
 
     return (
         <Container>
             <TurnText>
                 {
-                    currentPlayer === Player.Human
-                        ? 'Your turn, human'
-                        : 'Now it\'s my turn'
+                    whoWon === Player.Computer
+                        ? 'I won.'
+                        : whoWon === Player.Human
+                            ? 'What happened? You cheating??'
+                            : currentPlayer === Player.Human
+                                ? 'Your turn, human'
+                                : 'Now it\'s my turn'
                 }
             </TurnText>
         </Container>

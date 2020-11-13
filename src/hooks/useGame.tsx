@@ -1,12 +1,13 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-
-import GameData, { Player, PositionId, SymbolData } from '../interfaces/GameData';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import * as TicTacToeBrain from '../utilities/TicTacToeBrain';
+
+import GameData, { Player, PositionId, SymbolData } from '../interfaces/GameData';
 
 interface OrientationContextData {
     gameData: GameData;
     currentPlayer: Player;
+    whoWon: Player | null;
     onPressXOComponent(positionId: PositionId): void;
 }
 
@@ -22,19 +23,19 @@ export const GameProvider: React.FC = ({ children }) => {
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
 
+    const [timerRunning, setTimerRunning] = useState(false);
+
     const setGameDataWithPosition = useCallback(
         (positionId: PositionId, newSymbolData: SymbolData) => {
             const [row, column] = positionId;
 
-            setGameData(oldGameData => {
-                let gameDataCopy = TicTacToeBrain.copyGameData(oldGameData);
-    
-                gameDataCopy[row][column] = newSymbolData;
+            let gameDataCopy = [...gameData.map(row => [...row])];
 
-                return gameDataCopy;
-            });
+            gameDataCopy[row][column] = newSymbolData;
+
+            setGameData(gameDataCopy);
         },
-        [setGameData]
+        [gameData, setGameData]
     );
 
     const runNextStep = useCallback(
@@ -46,10 +47,6 @@ export const GameProvider: React.FC = ({ children }) => {
             setGameDataWithPosition(positionId, newSymbolData);
 
             setCurrentPlayer(newPlayer);
-
-            if (newPlayer === Player.Computer)
-                createComputerTimedResponse()
-
         },
         [currentPlayer, setGameDataWithPosition, setCurrentPlayer]
     );
@@ -66,16 +63,49 @@ export const GameProvider: React.FC = ({ children }) => {
         [gameData, currentPlayer, runNextStep]
     );
 
-    const createComputerTimedResponse = useCallback(
-        () => setTimeout(
-            () => runNextStep([0, 0], Player.Human),
-            2000
-        ),
-        [runNextStep]
+    const whoWon = useMemo(
+        () => {
+            const whoWon = TicTacToeBrain.findWhoWon(gameData);
+
+            const playerWhoWon = whoWon === null
+                ? null
+                : whoWon === SymbolData.O
+                    ? Player.Computer
+                    : Player.Human;
+            
+            return playerWhoWon;
+        },
+        [gameData]
+    );
+
+    useEffect(
+        () => {
+            if (currentPlayer === Player.Computer && !timerRunning && !whoWon) {
+                setTimerRunning(true);
+
+                console.log({ gameData })
+
+                const bestMove = TicTacToeBrain.findBestMove(gameData);
+
+                console.log({ bestMove });
+
+                setTimeout(
+                    () => {
+                        runNextStep(
+                            bestMove,
+                            Player.Human
+                        );
+                        setTimerRunning(false);
+                    },
+                    2000
+                );
+            }
+        },
+        [gameData, currentPlayer, timerRunning, runNextStep, setTimerRunning]
     );
 
     return (
-        <GameContext.Provider value={{ gameData, currentPlayer, onPressXOComponent }}>
+        <GameContext.Provider value={{ gameData, currentPlayer, whoWon, onPressXOComponent }}>
             {children}
         </GameContext.Provider>
     );
