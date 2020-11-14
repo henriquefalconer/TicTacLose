@@ -19,7 +19,7 @@ const XOComponent: React.FC<XORowProps> = ({ positionId }) => {
 
     const [row, column] = positionId;
 
-    const symbolData = gameData[row][column]
+    const symbolData = gameData.data[row][column]
 
     return (
         <ButtonContainer

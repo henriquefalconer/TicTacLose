@@ -1,5 +1,6 @@
 import { css } from "styled-components";
-import GameData, { Player, PositionId, SymbolData } from "../interfaces/GameData"
+import { Player, PositionId, SymbolData } from "../interfaces/GameData"
+import GameData from "./GameData";
 
 export const findNextSymbol = (gameData: GameData) => {
 
@@ -9,7 +10,7 @@ export const findNextSymbol = (gameData: GameData) => {
     for (let row = 0; row < 3; row++) {
         for (let column = 0; column < 3; column++) {
 
-            const symbolData = gameData[row][column];
+            const symbolData = gameData.data[row][column];
 
             if (symbolData === SymbolData.X) symbolX++;
 
@@ -27,7 +28,7 @@ export const isBoardFull = (gameData: GameData) => {
     for (let row = 0; row < 3; row++) {
         for (let column = 0; column < 3; column++) {
 
-            if (gameData[row][column] === SymbolData.None)
+            if (gameData.data[row][column] === SymbolData.None)
                 return false;
 
         }
@@ -55,15 +56,15 @@ export const findWhoWon = (gameData: GameData): Player | null => {
 
         for (let index1 = 0; index1 < 3; index1++) {
 
-            if (symbolDataMainHorizontal === undefined || gameData[index1][index1] === symbolDataMainHorizontal)
-                symbolDataMainHorizontal = gameData[index1][index1];
+            if (symbolDataMainHorizontal === undefined || gameData.data[index1][index1] === symbolDataMainHorizontal)
+                symbolDataMainHorizontal = gameData.data[index1][index1];
 
             else
                 symbolDataMainHorizontal = null;
 
 
-            if (symbolDataSecondaryHorizontal === undefined || gameData[index1][2 - index1] === symbolDataSecondaryHorizontal)
-                symbolDataSecondaryHorizontal = gameData[index1][2 - index1];
+            if (symbolDataSecondaryHorizontal === undefined || gameData.data[index1][2 - index1] === symbolDataSecondaryHorizontal)
+                symbolDataSecondaryHorizontal = gameData.data[index1][2 - index1];
 
             else
                 symbolDataSecondaryHorizontal = null;
@@ -74,15 +75,15 @@ export const findWhoWon = (gameData: GameData): Player | null => {
 
             for (let index2 = 0; index2 < 3; index2++) {
 
-                if (symbolDataHorizontal === undefined || gameData[index1][index2] === symbolDataHorizontal)
-                    symbolDataHorizontal = gameData[index1][index2];
+                if (symbolDataHorizontal === undefined || gameData.data[index1][index2] === symbolDataHorizontal)
+                    symbolDataHorizontal = gameData.data[index1][index2];
 
                 else
                     symbolDataHorizontal = null;
 
 
-                if (symbolDataVertical === undefined || gameData[index2][index1] === symbolDataVertical)
-                    symbolDataVertical = gameData[index2][index1];
+                if (symbolDataVertical === undefined || gameData.data[index2][index1] === symbolDataVertical)
+                    symbolDataVertical = gameData.data[index2][index1];
 
                 else
                     symbolDataVertical = null;
@@ -120,12 +121,12 @@ export const findBestMove = (gameData: GameData) => {
     for (let row = 0; row < 3; row++) {
         for (let column = 0; column < 3; column++) {
 
-            const symbolData = gameData[row][column];
+            const symbolData = gameData.data[row][column];
 
             if (symbolData === SymbolData.None) {
                 let newGameData = copyGameData(gameData);
 
-                newGameData[row][column] = SymbolData.O;
+                newGameData.data[row][column] = SymbolData.O;
 
                 const score = minMax(newGameData);
 
@@ -162,12 +163,12 @@ const minMax = (gameData: GameData): number => {
         for (let row = 0; row < 3; row++) {
             for (let column = 0; column < 3; column++) {
     
-                const symbolData = gameData[row][column];
+                const symbolData = gameData.data[row][column];
     
                 if (symbolData === SymbolData.None) {
                     let newGameData = copyGameData(gameData);
     
-                    newGameData[row][column] = SymbolData.O;
+                    newGameData.data[row][column] = SymbolData.O;
     
                     const score = minMax(newGameData);
     
@@ -182,12 +183,12 @@ const minMax = (gameData: GameData): number => {
         for (let row = 0; row < 3; row++) {
             for (let column = 0; column < 3; column++) {
     
-                const symbolData = gameData[row][column];
+                const symbolData = gameData.data[row][column];
     
                 if (symbolData === SymbolData.None) {
                     let newGameData = copyGameData(gameData);
     
-                    newGameData[row][column] = SymbolData.X;
+                    newGameData.data[row][column] = SymbolData.X;
     
                     const score = minMax(newGameData);
     
@@ -202,5 +203,5 @@ const minMax = (gameData: GameData): number => {
 };
 
 export const copyGameData = (gameData: GameData): GameData => (
-    [...gameData.map(row => [...row])]
+    new GameData([...gameData.data.map(row => [...row])])
 );

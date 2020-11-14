@@ -2,7 +2,8 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 
 import * as TicTacToeBrain from '../utilities/TicTacToeBrain';
 
-import GameData, { Player, PositionId, SymbolData } from '../interfaces/GameData';
+import { Player, PositionId, SymbolData } from '../interfaces/GameData';
+import GameData from '../utilities/GameData';
 
 interface OrientationContextData {
     gameData: GameData;
@@ -16,11 +17,11 @@ const GameContext = createContext<OrientationContextData>({} as OrientationConte
 
 export const GameProvider: React.FC = ({ children }) => {
 
-    const [gameData, setGameData] = useState([
+    const [gameData, setGameData] = useState(new GameData([
         [SymbolData.None, SymbolData.None, SymbolData.None],
         [SymbolData.None, SymbolData.None, SymbolData.None],
         [SymbolData.None, SymbolData.None, SymbolData.None]
-    ]);
+    ]));
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
 
@@ -30,9 +31,9 @@ export const GameProvider: React.FC = ({ children }) => {
         (positionId: PositionId, newSymbolData: SymbolData) => {
             const [row, column] = positionId;
 
-            let gameDataCopy = [...gameData.map(row => [...row])];
+            let gameDataCopy = TicTacToeBrain.copyGameData(gameData);
 
-            gameDataCopy[row][column] = newSymbolData;
+            gameDataCopy.data[row][column] = newSymbolData;
 
             setGameData(gameDataCopy);
         },
@@ -56,7 +57,7 @@ export const GameProvider: React.FC = ({ children }) => {
         (positionId: PositionId) => {
             const [row, column] = positionId;
 
-            const positionIsEmpty = gameData[row][column] === SymbolData.None;
+            const positionIsEmpty = gameData.data[row][column] === SymbolData.None;
 
             if (positionIsEmpty && currentPlayer === Player.Human)
                 runNextStep(positionId, Player.Computer);
@@ -71,11 +72,11 @@ export const GameProvider: React.FC = ({ children }) => {
 
     const restart = useCallback(
         () => {
-            setGameData([
+            setGameData(new GameData([
                 [SymbolData.None, SymbolData.None, SymbolData.None],
                 [SymbolData.None, SymbolData.None, SymbolData.None],
                 [SymbolData.None, SymbolData.None, SymbolData.None]
-            ]);
+            ]));
             setCurrentPlayer(Player.Human);
         },
         [setGameData, setCurrentPlayer]

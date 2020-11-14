@@ -11,7 +11,3 @@ export enum Player {
     Computer = 'Computer',
     None = 'None'
 }
-
-type GameData = Array<Array<SymbolData>>;
-
-export default GameData;
