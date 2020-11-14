@@ -95,7 +95,7 @@ export const GameProvider: React.FC = ({ children }) => {
                         );
                         setTimerRunning(false);
                     },
-                    2000
+                    (Math.random() + 1) * 1000
                 );
             }
         },
