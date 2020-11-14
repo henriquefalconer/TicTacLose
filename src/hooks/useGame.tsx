@@ -57,7 +57,7 @@ export const GameProvider: React.FC = ({ children }) => {
 
             const positionIsEmpty = gameData.data[row][column] === SymbolData.None;
 
-            if (positionIsEmpty && currentPlayer === Player.Human)
+            if (!whoWon && positionIsEmpty && currentPlayer === Player.Human)
                 runNextStep(positionId, Player.Computer);
         },
         [gameData, currentPlayer, runNextStep]
