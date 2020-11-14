@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import GameData, { PositionId, SymbolData } from "../interfaces/GameData"
+import GameData, { Player, PositionId, SymbolData } from "../interfaces/GameData"
 
 export const findNextSymbol = (gameData: GameData) => {
 
@@ -10,7 +10,7 @@ export const findNextSymbol = (gameData: GameData) => {
         for (let column = 0; column < 3; column++) {
 
             const symbolData = gameData[row][column];
-            
+
             if (symbolData === SymbolData.X) symbolX++;
 
             if (symbolData === SymbolData.O) symbolO++;
@@ -22,76 +22,106 @@ export const findNextSymbol = (gameData: GameData) => {
 
 };
 
-export const findWhoWon = (gameData: GameData): SymbolData | null => {
+export const isBoardFull = (gameData: GameData) => {
 
-    let symbolDataMainHorizontal: SymbolData | undefined = undefined;
-    let symbolDataSecondaryHorizontal: SymbolData | undefined = undefined;
+    for (let row = 0; row < 3; row++) {
+        for (let column = 0; column < 3; column++) {
 
-    for (let index1 = 0; index1 < 3; index1++) {
-            
-        if (symbolDataMainHorizontal === undefined || gameData[index1][index1] === symbolDataMainHorizontal)
-            symbolDataMainHorizontal = gameData[index1][index1];
+            if (gameData[row][column] === SymbolData.None)
+                return false;
 
-        else
-            symbolDataMainHorizontal = null;
-            
-        
-        if (symbolDataSecondaryHorizontal === undefined || gameData[index1][2 - index1] === symbolDataSecondaryHorizontal)
-            symbolDataSecondaryHorizontal = gameData[index1][2 - index1];
+        }
+    }
 
-        else
-            symbolDataSecondaryHorizontal = null;
+    return true;
 
-        
-        let symbolDataHorizontal: SymbolData | undefined = undefined;
-        let symbolDataVertical: SymbolData | undefined = undefined;
+}
 
-        for (let index2 = 0; index2 < 3; index2++) {
-            
-            if (symbolDataHorizontal === undefined || gameData[index1][index2] === symbolDataHorizontal)
-                symbolDataHorizontal = gameData[index1][index2];
+export const convertSymbolDataToPlayer = (symbolData: SymbolData | null) => (
+    symbolData === null
+        ? null
+        : symbolData === SymbolData.None
+            ? Player.None
+            : symbolData === SymbolData.O
+                ? Player.Computer
+                : Player.Human
+);
+
+export const findWhoWon = (gameData: GameData): Player | null => {
+    const findWinnerSymbolData = () => {
+
+        let symbolDataMainHorizontal: SymbolData | undefined = undefined;
+        let symbolDataSecondaryHorizontal: SymbolData | undefined = undefined;
+
+        for (let index1 = 0; index1 < 3; index1++) {
+
+            if (symbolDataMainHorizontal === undefined || gameData[index1][index1] === symbolDataMainHorizontal)
+                symbolDataMainHorizontal = gameData[index1][index1];
 
             else
-                symbolDataHorizontal = null;
-            
-            
-            if (symbolDataVertical === undefined || gameData[index2][index1] === symbolDataVertical)
-                symbolDataVertical = gameData[index2][index1];
+                symbolDataMainHorizontal = null;
+
+
+            if (symbolDataSecondaryHorizontal === undefined || gameData[index1][2 - index1] === symbolDataSecondaryHorizontal)
+                symbolDataSecondaryHorizontal = gameData[index1][2 - index1];
 
             else
-                symbolDataVertical = null;
+                symbolDataSecondaryHorizontal = null;
+
+
+            let symbolDataHorizontal: SymbolData | undefined = undefined;
+            let symbolDataVertical: SymbolData | undefined = undefined;
+
+            for (let index2 = 0; index2 < 3; index2++) {
+
+                if (symbolDataHorizontal === undefined || gameData[index1][index2] === symbolDataHorizontal)
+                    symbolDataHorizontal = gameData[index1][index2];
+
+                else
+                    symbolDataHorizontal = null;
+
+
+                if (symbolDataVertical === undefined || gameData[index2][index1] === symbolDataVertical)
+                    symbolDataVertical = gameData[index2][index1];
+
+                else
+                    symbolDataVertical = null;
+
+            }
+
+            if (symbolDataHorizontal)
+                return symbolDataHorizontal;
+
+            if (symbolDataVertical)
+                return symbolDataVertical;
 
         }
 
-        if (symbolDataHorizontal)
-            return symbolDataHorizontal;
+        if (symbolDataMainHorizontal)
+            return symbolDataMainHorizontal;
 
-        if (symbolDataVertical)
-            return symbolDataVertical;
+        if (symbolDataSecondaryHorizontal)
+            return symbolDataSecondaryHorizontal;
 
+
+        return isBoardFull(gameData) ? SymbolData.None : null;
     }
 
-    if (symbolDataMainHorizontal)
-        return symbolDataMainHorizontal;
+    const winnerSymbolData = findWinnerSymbolData()
 
-    if (symbolDataSecondaryHorizontal)
-        return symbolDataSecondaryHorizontal;
-
-        
-    return null;
-
+    return convertSymbolDataToPlayer(winnerSymbolData);
 };
 
 export const findBestMove = (gameData: GameData) => {
 
-    let maxPossibleWins = 0;
+    let maxPossibleWins = -1;
     let bestPosition: PositionId | undefined;
 
     for (let row = 0; row < 3; row++) {
         for (let column = 0; column < 3; column++) {
 
             const symbolData = gameData[row][column];
-            
+
             if (symbolData === SymbolData.None) {
                 let newGameData = copyGameData(gameData);
 
@@ -123,7 +153,7 @@ const findPossibleWins = (gameData: GameData, depth = 0): number[] => {
 
     // console.log(whoWon);
 
-    if (whoWon === SymbolData.O)
+    if (whoWon === Player.Computer)
         return [1, depth];
 
     let possibleWins = 0;
@@ -132,7 +162,7 @@ const findPossibleWins = (gameData: GameData, depth = 0): number[] => {
         for (let column = 0; column < 3; column++) {
 
             const symbolData = gameData[row][column];
-            
+
             if (symbolData === SymbolData.None) {
                 let newGameData = copyGameData(gameData);
 

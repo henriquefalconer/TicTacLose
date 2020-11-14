@@ -14,13 +14,15 @@ const TopArea: React.FC = () => {
         <Container>
             <TurnText>
                 {
-                    whoWon === Player.Computer
-                        ? 'I won.'
-                        : whoWon === Player.Human
-                            ? 'What happened? You cheating??'
-                            : currentPlayer === Player.Human
-                                ? 'Your turn, human'
-                                : 'Now it\'s my turn'
+                    whoWon === Player.None
+                        ? 'Very well, my friend.\nA draw.'
+                        : whoWon === Player.Computer
+                            ? 'I won.'
+                            : whoWon === Player.Human
+                                ? 'What happened? You cheating??'
+                                : currentPlayer === Player.Human
+                                    ? 'Your turn, human'
+                                    : 'Now it\'s my turn'
                 }
             </TurnText>
         </Container>

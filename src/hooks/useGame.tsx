@@ -17,9 +17,9 @@ const GameContext = createContext<OrientationContextData>({} as OrientationConte
 export const GameProvider: React.FC = ({ children }) => {
 
     const [gameData, setGameData] = useState([
-        [SymbolData.None, SymbolData.None, SymbolData.None],
-        [SymbolData.None, SymbolData.None, SymbolData.None],
-        [SymbolData.None, SymbolData.None, SymbolData.None]
+        [SymbolData.O, SymbolData.None, SymbolData.None],
+        [SymbolData.X, SymbolData.O, SymbolData.O],
+        [SymbolData.O, SymbolData.X, SymbolData.X]
     ]);
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
@@ -65,17 +65,7 @@ export const GameProvider: React.FC = ({ children }) => {
     );
 
     const whoWon = useMemo(
-        () => {
-            const whoWon = TicTacToeBrain.findWhoWon(gameData);
-
-            const playerWhoWon = whoWon === null
-                ? null
-                : whoWon === SymbolData.O
-                    ? Player.Computer
-                    : Player.Human;
-
-            return playerWhoWon;
-        },
+        () => TicTacToeBrain.findWhoWon(gameData),
         [gameData]
     );
 
