@@ -12,4 +12,19 @@ class GameData {
 
 }
 
+export class EmptyGameData extends GameData {
+    
+    constructor(dimensions: number) {
+
+        const data = Array(dimensions).join().split(',').map(
+            _ => Array(dimensions).join().split(',').map(
+                _ => SymbolData.None
+            )
+        );
+
+        super(data);
+    }
+
+}
+
 export default GameData;

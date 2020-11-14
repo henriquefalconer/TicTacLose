@@ -3,7 +3,9 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import * as TicTacToeBrain from '../utilities/TicTacToeBrain';
 
 import { Player, PositionId, SymbolData } from '../interfaces/GameData';
-import GameData from '../utilities/GameData';
+import GameData, { EmptyGameData } from '../utilities/GameData';
+
+const DIMENSIONS = 3;
 
 interface OrientationContextData {
     gameData: GameData;
@@ -17,11 +19,7 @@ const GameContext = createContext<OrientationContextData>({} as OrientationConte
 
 export const GameProvider: React.FC = ({ children }) => {
 
-    const [gameData, setGameData] = useState(new GameData([
-        [SymbolData.None, SymbolData.None, SymbolData.None],
-        [SymbolData.None, SymbolData.None, SymbolData.None],
-        [SymbolData.None, SymbolData.None, SymbolData.None]
-    ]));
+    const [gameData, setGameData] = useState(new EmptyGameData(DIMENSIONS));
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
 
@@ -72,11 +70,7 @@ export const GameProvider: React.FC = ({ children }) => {
 
     const restart = useCallback(
         () => {
-            setGameData(new GameData([
-                [SymbolData.None, SymbolData.None, SymbolData.None],
-                [SymbolData.None, SymbolData.None, SymbolData.None],
-                [SymbolData.None, SymbolData.None, SymbolData.None]
-            ]));
+            setGameData(new EmptyGameData(DIMENSIONS));
             setCurrentPlayer(Player.Human);
         },
         [setGameData, setCurrentPlayer]
