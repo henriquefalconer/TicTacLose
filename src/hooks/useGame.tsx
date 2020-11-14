@@ -9,6 +9,7 @@ interface OrientationContextData {
     currentPlayer: Player;
     whoWon: Player | null;
     onPressXOComponent(positionId: PositionId): void;
+    restart(): void;
 }
 
 const GameContext = createContext<OrientationContextData>({} as OrientationContextData);
@@ -72,10 +73,22 @@ export const GameProvider: React.FC = ({ children }) => {
                 : whoWon === SymbolData.O
                     ? Player.Computer
                     : Player.Human;
-            
+
             return playerWhoWon;
         },
         [gameData]
+    );
+
+    const restart = useCallback(
+        () => {
+            setGameData([
+                [SymbolData.None, SymbolData.None, SymbolData.None],
+                [SymbolData.None, SymbolData.None, SymbolData.None],
+                [SymbolData.None, SymbolData.None, SymbolData.None]
+            ]);
+            setCurrentPlayer(Player.Human);
+        },
+        [setGameData, setCurrentPlayer]
     );
 
     useEffect(
@@ -105,7 +118,15 @@ export const GameProvider: React.FC = ({ children }) => {
     );
 
     return (
-        <GameContext.Provider value={{ gameData, currentPlayer, whoWon, onPressXOComponent }}>
+        <GameContext.Provider
+            value={{
+                gameData,
+                currentPlayer,
+                whoWon,
+                onPressXOComponent,
+                restart
+            }}
+        >
             {children}
         </GameContext.Provider>
     );

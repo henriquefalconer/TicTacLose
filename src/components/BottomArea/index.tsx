@@ -1,10 +1,21 @@
 import React from 'react';
+import { useGame } from '../../hooks/useGame';
 
-import { Container } from './styles';
+import { Container, RestartButton, RestartText } from './styles';
 
 const BottomArea: React.FC = () => {
+
+    const { whoWon, restart } = useGame();
+
     return (
-        <Container />
+        <Container>
+            <RestartButton
+                disabled={!whoWon}
+                onPress={restart}
+            >
+                <RestartText>Restart</RestartText>
+            </RestartButton>
+        </Container>
     );
 }
 
