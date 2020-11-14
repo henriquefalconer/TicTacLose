@@ -1,4 +1,7 @@
 import React from 'react';
+import { View } from 'react-native';
+
+import { useGame } from '../../../hooks/useGame';
 
 import { FrameLine } from '../FrameLine';
 import XOComponent from '../XOComponent';
@@ -10,19 +13,24 @@ interface XORowProps {
 }
 
 const XORow: React.FC<XORowProps> = ({ row }) => {
+
+    const { gameData } = useGame();
+
     return (
         <Container>
-            <XOComponent 
-                positionId={[row, 0]} 
-            />
-            <FrameLine/>
-            <XOComponent 
-                positionId={[row, 1]} 
-            />
-            <FrameLine/>
-            <XOComponent 
-                positionId={[row, 2]} 
-            />
+            {
+                Array(gameData.dimensions).join().split(',').map(
+                    (_, index) => (
+                        [
+                            ...[index !== 0 ? [<FrameLine key={index + 'line'} />] : []],
+                            <XOComponent
+                                key={index + 'XO'}
+                                positionId={[row, index]}
+                            />
+                        ]
+                    )
+                )
+            }
         </Container>
     );
 }

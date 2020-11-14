@@ -1,4 +1,7 @@
 import React from 'react';
+import { View } from 'react-native';
+
+import { useGame } from '../../../hooks/useGame';
 
 import { FrameLine } from '../FrameLine';
 import XORow from '../XORow';
@@ -6,13 +9,24 @@ import XORow from '../XORow';
 import { Container } from './styles';
 
 const FrameComponent: React.FC = () => {
+
+    const { gameData } = useGame();
+
     return (
         <Container>
-            <XORow row={0} />
-            <FrameLine horizontal />
-            <XORow row={1} />
-            <FrameLine horizontal />
-            <XORow row={2} />
+            {
+                Array(gameData.dimensions).join().split(',').map(
+                    (_, index) => (
+                        <View
+                            key={index}
+                            style={{ flex: 1 }}
+                        >
+                            { index !== 0 && <FrameLine horizontal /> }
+                            <XORow row={index} />
+                        </View>
+                    )
+                )
+            }
         </Container>
     );
 }
