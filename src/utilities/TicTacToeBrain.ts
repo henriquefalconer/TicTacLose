@@ -144,8 +144,8 @@ export const findBestMove = (gameData: GameData) => {
 
 let scores = {};
 
-scores[Player.Human] = -1;
-scores[Player.Computer] = 1;
+scores[Player.Human] = 1;
+scores[Player.Computer] = -1;
 scores[Player.None] = 0;
 
 const minMax = (gameData: GameData, maxDepth?: number, depth: number = 0): number => {
