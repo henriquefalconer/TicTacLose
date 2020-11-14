@@ -127,7 +127,7 @@ export const findBestMove = (gameData: GameData) => {
 
                 newGameData.data[row][column] = SymbolData.O;
 
-                const score = minMax(newGameData);
+                const score = minMax(newGameData, 2);
 
                 if (score > bestScore) {
                     bestScore = score;
@@ -148,7 +148,12 @@ scores[Player.Human] = -1;
 scores[Player.Computer] = 1;
 scores[Player.None] = 0;
 
-const minMax = (gameData: GameData): number => {
+const minMax = (gameData: GameData, maxDepth: number, depth: number = 0): number => {
+
+    if (depth > maxDepth) {
+        // console.log('Reached maxDepth')
+        return 0;
+    }
 
     const whoWon = findWhoWon(gameData);
 
@@ -169,7 +174,7 @@ const minMax = (gameData: GameData): number => {
     
                     newGameData.data[row][column] = SymbolData.O;
     
-                    const score = minMax(newGameData);
+                    const score = minMax(newGameData, maxDepth, depth + 1);
     
                     bestScore = Math.max(score, bestScore);
                 }
@@ -189,7 +194,7 @@ const minMax = (gameData: GameData): number => {
     
                     newGameData.data[row][column] = SymbolData.X;
     
-                    const score = minMax(newGameData);
+                    const score = minMax(newGameData, maxDepth, depth + 1);
     
                     bestScore = Math.min(score, bestScore);
                 }

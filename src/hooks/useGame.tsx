@@ -5,7 +5,7 @@ import * as TicTacToeBrain from '../utilities/TicTacToeBrain';
 import { Player, PositionId, SymbolData } from '../interfaces/GameData';
 import GameData, { EmptyGameData } from '../utilities/GameData';
 
-const DIMENSIONS = 3;
+const DIMENSIONS = 4;
 
 interface OrientationContextData {
     gameData: GameData;
