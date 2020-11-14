@@ -17,9 +17,9 @@ const GameContext = createContext<OrientationContextData>({} as OrientationConte
 export const GameProvider: React.FC = ({ children }) => {
 
     const [gameData, setGameData] = useState([
-        [SymbolData.O, SymbolData.None, SymbolData.None],
-        [SymbolData.X, SymbolData.O, SymbolData.O],
-        [SymbolData.O, SymbolData.X, SymbolData.X]
+        [SymbolData.None, SymbolData.None, SymbolData.None],
+        [SymbolData.None, SymbolData.None, SymbolData.None],
+        [SymbolData.None, SymbolData.None, SymbolData.None]
     ]);
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
