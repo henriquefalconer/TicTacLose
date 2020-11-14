@@ -114,7 +114,7 @@ export const findWhoWon = (gameData: GameData): Player | null => {
 
 export const findBestMove = (gameData: GameData) => {
 
-    let bestScore = -1;
+    let bestScore = -Infinity;
     let bestPosition: PositionId | undefined;
 
     for (let row = 0; row < 3; row++) {
