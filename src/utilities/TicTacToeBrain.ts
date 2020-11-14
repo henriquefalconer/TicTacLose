@@ -54,7 +54,7 @@ export const findWhoWon = (gameData: GameData): Player | null => {
         let symbolDataMainHorizontal: SymbolData | undefined = undefined;
         let symbolDataSecondaryHorizontal: SymbolData | undefined = undefined;
 
-        for (let index1 = 0; index1 < 3; index1++) {
+        for (let index1 = 0; index1 < gameData.dimensions; index1++) {
 
             if (symbolDataMainHorizontal === undefined || gameData.data[index1][index1] === symbolDataMainHorizontal)
                 symbolDataMainHorizontal = gameData.data[index1][index1];
@@ -118,8 +118,8 @@ export const findBestMove = (gameData: GameData) => {
     let bestScore = -Infinity;
     let bestPosition: PositionId | undefined;
 
-    for (let row = 0; row < 3; row++) {
-        for (let column = 0; column < 3; column++) {
+    for (let row = 0; row < gameData.dimensions; row++) {
+        for (let column = 0; column < gameData.dimensions; column++) {
 
             const symbolData = gameData.data[row][column];
 
@@ -160,8 +160,8 @@ const minMax = (gameData: GameData): number => {
 
     if (nextSymbol === SymbolData.O) {
         let bestScore = -Infinity;
-        for (let row = 0; row < 3; row++) {
-            for (let column = 0; column < 3; column++) {
+        for (let row = 0; row < gameData.dimensions; row++) {
+            for (let column = 0; column < gameData.dimensions; column++) {
     
                 const symbolData = gameData.data[row][column];
     
@@ -180,8 +180,8 @@ const minMax = (gameData: GameData): number => {
         return bestScore;
     } else {
         let bestScore = Infinity;
-        for (let row = 0; row < 3; row++) {
-            for (let column = 0; column < 3; column++) {
+        for (let row = 0; row < gameData.dimensions; row++) {
+            for (let column = 0; column < gameData.dimensions; column++) {
     
                 const symbolData = gameData.data[row][column];
     
