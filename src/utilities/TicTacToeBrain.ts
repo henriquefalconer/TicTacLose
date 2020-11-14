@@ -114,7 +114,7 @@ export const findWhoWon = (gameData: GameData): Player | null => {
 
 export const findBestMove = (gameData: GameData) => {
 
-    let maxPossibleWins = -1;
+    let bestScore = -1;
     let bestPosition: PositionId | undefined;
 
     for (let row = 0; row < 3; row++) {
@@ -127,13 +127,10 @@ export const findBestMove = (gameData: GameData) => {
 
                 newGameData[row][column] = SymbolData.O;
 
-                const [possibleWins, depth] = findPossibleWins(newGameData);
+                const score = minMax(newGameData);
 
-                console.log(newGameData);
-                console.log({ possibleWins, row, column, depth });
-
-                if (possibleWins > maxPossibleWins) {
-                    maxPossibleWins = possibleWins;
+                if (score > bestScore) {
+                    bestScore = score;
                     bestPosition = [row, column];
                 }
             }
@@ -145,40 +142,62 @@ export const findBestMove = (gameData: GameData) => {
 
 };
 
-const findPossibleWins = (gameData: GameData, depth = 0): number[] => {
+let scores = {};
 
-    // console.log(gameData);
+scores[Player.Human] = -1;
+scores[Player.Computer] = 1;
+scores[Player.None] = 0;
+
+const minMax = (gameData: GameData): number => {
 
     const whoWon = findWhoWon(gameData);
 
-    // console.log(whoWon);
+    if (whoWon)
+        return scores[whoWon];
 
-    if (whoWon === Player.Computer)
-        return [1, depth];
+    const nextSymbol = findNextSymbol(gameData);
 
-    let possibleWins = 0;
-
-    for (let row = 0; row < 3; row++) {
-        for (let column = 0; column < 3; column++) {
-
-            const symbolData = gameData[row][column];
-
-            if (symbolData === SymbolData.None) {
-                let newGameData = copyGameData(gameData);
-
-                newGameData[row][column] = findNextSymbol(newGameData);
-
-                const [newWins, newDepth] = findPossibleWins(newGameData, depth + 1);
-
-                depth = newDepth;
-
-                possibleWins += newWins;
+    if (nextSymbol === SymbolData.O) {
+        let bestScore = -Infinity;
+        for (let row = 0; row < 3; row++) {
+            for (let column = 0; column < 3; column++) {
+    
+                const symbolData = gameData[row][column];
+    
+                if (symbolData === SymbolData.None) {
+                    let newGameData = copyGameData(gameData);
+    
+                    newGameData[row][column] = SymbolData.O;
+    
+                    const score = minMax(newGameData);
+    
+                    bestScore = Math.max(score, bestScore);
+                }
+    
             }
-
         }
+        return bestScore;
+    } else {
+        let bestScore = Infinity;
+        for (let row = 0; row < 3; row++) {
+            for (let column = 0; column < 3; column++) {
+    
+                const symbolData = gameData[row][column];
+    
+                if (symbolData === SymbolData.None) {
+                    let newGameData = copyGameData(gameData);
+    
+                    newGameData[row][column] = SymbolData.X;
+    
+                    const score = minMax(newGameData);
+    
+                    bestScore = Math.min(score, bestScore);
+                }
+    
+            }
+        }
+        return bestScore;
     }
-
-    return [possibleWins, depth];
 
 };
 
