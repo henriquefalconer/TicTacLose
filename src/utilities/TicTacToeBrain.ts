@@ -24,8 +24,8 @@ export const findNextSymbol = (gameData: GameData) => {
 
 export const isBoardFull = (gameData: GameData) => {
 
-    for (let row = 0; row < 3; row++) {
-        for (let column = 0; column < 3; column++) {
+    for (let row = 0; row < gameData.dimensions; row++) {
+        for (let column = 0; column < gameData.dimensions; column++) {
 
             if (gameData.data[row][column] === SymbolData.None)
                 return false;
