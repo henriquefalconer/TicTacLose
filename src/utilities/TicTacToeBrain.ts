@@ -1,4 +1,3 @@
-import { css } from "styled-components";
 import { Player, PositionId, SymbolData } from "../interfaces/GameData"
 import GameData from "./GameData";
 
@@ -7,8 +6,8 @@ export const findNextSymbol = (gameData: GameData) => {
     let symbolX = 0;
     let symbolO = 0;
 
-    for (let row = 0; row < 3; row++) {
-        for (let column = 0; column < 3; column++) {
+    for (let row = 0; row < gameData.dimensions; row++) {
+        for (let column = 0; column < gameData.dimensions; column++) {
 
             const symbolData = gameData.data[row][column];
 
@@ -63,8 +62,8 @@ export const findWhoWon = (gameData: GameData): Player | null => {
                 symbolDataMainHorizontal = null;
 
 
-            if (symbolDataSecondaryHorizontal === undefined || gameData.data[index1][2 - index1] === symbolDataSecondaryHorizontal)
-                symbolDataSecondaryHorizontal = gameData.data[index1][2 - index1];
+            if (symbolDataSecondaryHorizontal === undefined || gameData.data[index1][gameData.dimensions - 1 - index1] === symbolDataSecondaryHorizontal)
+                symbolDataSecondaryHorizontal = gameData.data[index1][gameData.dimensions - 1 - index1];
 
             else
                 symbolDataSecondaryHorizontal = null;
@@ -73,7 +72,7 @@ export const findWhoWon = (gameData: GameData): Player | null => {
             let symbolDataHorizontal: SymbolData | undefined = undefined;
             let symbolDataVertical: SymbolData | undefined = undefined;
 
-            for (let index2 = 0; index2 < 3; index2++) {
+            for (let index2 = 0; index2 < gameData.dimensions; index2++) {
 
                 if (symbolDataHorizontal === undefined || gameData.data[index1][index2] === symbolDataHorizontal)
                     symbolDataHorizontal = gameData.data[index1][index2];
