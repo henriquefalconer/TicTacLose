@@ -19,7 +19,7 @@ const TopArea: React.FC = () => {
                         : whoWon === Player.Computer
                             ? 'I won.'
                             : whoWon === Player.Human
-                                ? 'What happened? You cheating??'
+                                ? 'You won.'
                                 : currentPlayer === Player.Human
                                     ? 'Your turn, human'
                                     : 'Now it\'s my turn'

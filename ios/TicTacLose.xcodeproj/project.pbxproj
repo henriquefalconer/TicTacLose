@@ -8,18 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* TicTacLoseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TicTacLoseTests.m */; };
-		089CCFD3A2BA02AE2C38A255 /* libPods-TicTacLose-TicTacLoseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C2B15731E0BF7EABE8A4044 /* libPods-TicTacLose-TicTacLoseTests.a */; };
+		129F2E798AC3A2CA8BDB85F1 /* libPods-TicTacLose.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 228C460997CF16BBE6F435E4 /* libPods-TicTacLose.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2A11A6DB606D2730CC7850D2 /* libPods-TicTacLose-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301D295359597336837A1359 /* libPods-TicTacLose-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* TicTacLoseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TicTacLoseTests.m */; };
-		6F3356FF5C792708AFF60C45 /* libPods-TicTacLose.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 063435022BAA578AD6A7B2E9 /* libPods-TicTacLose.a */; };
+		2EC1120F76AC7831DB026708 /* libPods-TicTacLoseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CB0790D0F5AA72BF4431EC /* libPods-TicTacLoseTests.a */; };
+		7BF0EFCA1DDA62A249C95BFA /* libPods-TicTacLose-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BCAC2783CD89A5106D6386 /* libPods-TicTacLose-tvOSTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F3D2A7665FFEE388ED0F3CF3 /* libPods-TicTacLose-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F34FD3A7A28AB00C0A85CD1B /* libPods-TicTacLose-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 		00E356EE1AD99517003FC87E /* TicTacLoseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacLoseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* TicTacLoseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacLoseTests.m; sourceTree = "<group>"; };
-		063435022BAA578AD6A7B2E9 /* libPods-TicTacLose.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLose.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* TicTacLose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacLose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = TicTacLose/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = TicTacLose/AppDelegate.m; sourceTree = "<group>"; };
@@ -53,20 +51,20 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TicTacLose/main.m; sourceTree = "<group>"; };
 		169624C12E323D6B693F9DB7 /* Pods-TicTacLose.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose.release.xcconfig"; path = "Target Support Files/Pods-TicTacLose/Pods-TicTacLose.release.xcconfig"; sourceTree = "<group>"; };
 		1CFB027133B30123F0056925 /* Pods-TicTacLose-TicTacLoseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose-TicTacLoseTests.release.xcconfig"; path = "Target Support Files/Pods-TicTacLose-TicTacLoseTests/Pods-TicTacLose-TicTacLoseTests.release.xcconfig"; sourceTree = "<group>"; };
+		228C460997CF16BBE6F435E4 /* libPods-TicTacLose.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLose.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* TicTacLose-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TicTacLose-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* TicTacLose-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TicTacLose-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		301D295359597336837A1359 /* libPods-TicTacLose-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLose-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C2B15731E0BF7EABE8A4044 /* libPods-TicTacLose-TicTacLoseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLose-TicTacLoseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B4DC9A19E39294BE544EE64 /* Pods-TicTacLoseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLoseTests.release.xcconfig"; path = "Target Support Files/Pods-TicTacLoseTests/Pods-TicTacLoseTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C5342C3EA7E4CC0D240E98D /* Pods-TicTacLose-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-TicTacLose-tvOSTests/Pods-TicTacLose-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		77AC9B4ADD88DAEF3B85B5DD /* Pods-TicTacLose-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose-tvOS.release.xcconfig"; path = "Target Support Files/Pods-TicTacLose-tvOS/Pods-TicTacLose-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TicTacLose/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		853F7C499E7F28C068156848 /* Pods-TicTacLose-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-TicTacLose-tvOS/Pods-TicTacLose-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8FA3E3C1CE6BED138EE3A763 /* Pods-TicTacLose-TicTacLoseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose-TicTacLoseTests.debug.xcconfig"; path = "Target Support Files/Pods-TicTacLose-TicTacLoseTests/Pods-TicTacLose-TicTacLoseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AFC176A46B7A50E1C16DB8B9 /* Pods-TicTacLose.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose.debug.xcconfig"; path = "Target Support Files/Pods-TicTacLose/Pods-TicTacLose.debug.xcconfig"; sourceTree = "<group>"; };
 		DCDC256D1C98A43B6F06A910 /* Pods-TicTacLose-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLose-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TicTacLose-tvOSTests/Pods-TicTacLose-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1BCAC2783CD89A5106D6386 /* libPods-TicTacLose-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLose-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3760621876E6B6A8096E78D /* Pods-TicTacLoseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacLoseTests.debug.xcconfig"; path = "Target Support Files/Pods-TicTacLoseTests/Pods-TicTacLoseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F34FD3A7A28AB00C0A85CD1B /* libPods-TicTacLose-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLose-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CB0790D0F5AA72BF4431EC /* libPods-TicTacLoseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TicTacLoseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				089CCFD3A2BA02AE2C38A255 /* libPods-TicTacLose-TicTacLoseTests.a in Frameworks */,
+				2EC1120F76AC7831DB026708 /* libPods-TicTacLoseTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3356FF5C792708AFF60C45 /* libPods-TicTacLose.a in Frameworks */,
+				129F2E798AC3A2CA8BDB85F1 /* libPods-TicTacLose.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A11A6DB606D2730CC7850D2 /* libPods-TicTacLose-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3D2A7665FFEE388ED0F3CF3 /* libPods-TicTacLose-tvOSTests.a in Frameworks */,
+				7BF0EFCA1DDA62A249C95BFA /* libPods-TicTacLose-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,10 +138,9 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				063435022BAA578AD6A7B2E9 /* libPods-TicTacLose.a */,
-				3C2B15731E0BF7EABE8A4044 /* libPods-TicTacLose-TicTacLoseTests.a */,
-				301D295359597336837A1359 /* libPods-TicTacLose-tvOS.a */,
-				F34FD3A7A28AB00C0A85CD1B /* libPods-TicTacLose-tvOSTests.a */,
+				228C460997CF16BBE6F435E4 /* libPods-TicTacLose.a */,
+				E1BCAC2783CD89A5106D6386 /* libPods-TicTacLose-tvOSTests.a */,
+				F9CB0790D0F5AA72BF4431EC /* libPods-TicTacLoseTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,12 +185,11 @@
 				169624C12E323D6B693F9DB7 /* Pods-TicTacLose.release.xcconfig */,
 				8FA3E3C1CE6BED138EE3A763 /* Pods-TicTacLose-TicTacLoseTests.debug.xcconfig */,
 				1CFB027133B30123F0056925 /* Pods-TicTacLose-TicTacLoseTests.release.xcconfig */,
-				853F7C499E7F28C068156848 /* Pods-TicTacLose-tvOS.debug.xcconfig */,
-				77AC9B4ADD88DAEF3B85B5DD /* Pods-TicTacLose-tvOS.release.xcconfig */,
 				DCDC256D1C98A43B6F06A910 /* Pods-TicTacLose-tvOSTests.debug.xcconfig */,
 				6C5342C3EA7E4CC0D240E98D /* Pods-TicTacLose-tvOSTests.release.xcconfig */,
+				E3760621876E6B6A8096E78D /* Pods-TicTacLoseTests.debug.xcconfig */,
+				6B4DC9A19E39294BE544EE64 /* Pods-TicTacLoseTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,7 +204,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				CF62531F14C52B8E5AAC98AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,7 +225,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				0E3ED1AF558978B8835F66A9 /* [CP] Copy Pods Resources */,
+				3C035B8AB5D1FF61B1756224 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,7 +240,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "TicTacLose-tvOS" */;
 			buildPhases = (
-				CDCF1029A722697BA6E226C1 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -294,6 +287,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 82L63Y7JQJ;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -302,6 +296,7 @@
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 82L63Y7JQJ;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -399,24 +394,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		0E3ED1AF558978B8835F66A9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TicTacLose/Pods-TicTacLose-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TicTacLose/Pods-TicTacLose-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +430,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3C035B8AB5D1FF61B1756224 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TicTacLose/Pods-TicTacLose-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TicTacLose/Pods-TicTacLose-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBA225CFF4D9B68CF0ABCE89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,51 +463,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TicTacLose-TicTacLoseTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TicTacLoseTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CDCF1029A722697BA6E226C1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TicTacLose-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF62531F14C52B8E5AAC98AA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TicTacLose-TicTacLoseTests/Pods-TicTacLose-TicTacLoseTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TicTacLose-TicTacLoseTests/Pods-TicTacLose-TicTacLoseTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -608,7 +563,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FA3E3C1CE6BED138EE3A763 /* Pods-TicTacLose-TicTacLoseTests.debug.xcconfig */;
+			baseConfigurationReference = E3760621876E6B6A8096E78D /* Pods-TicTacLoseTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -631,7 +586,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CFB027133B30123F0056925 /* Pods-TicTacLose-TicTacLoseTests.release.xcconfig */;
+			baseConfigurationReference = 6B4DC9A19E39294BE544EE64 /* Pods-TicTacLoseTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -656,6 +611,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 82L63Y7JQJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TicTacLose/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -679,6 +635,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 82L63Y7JQJ;
 				INFOPLIST_FILE = TicTacLose/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -695,7 +652,6 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 853F7C499E7F28C068156848 /* Pods-TicTacLose-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -723,7 +679,6 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77AC9B4ADD88DAEF3B85B5DD /* Pods-TicTacLose-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -759,6 +714,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 82L63Y7JQJ;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "TicTacLose-tvOSTests/Info.plist";
@@ -787,6 +743,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 82L63Y7JQJ;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "TicTacLose-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
