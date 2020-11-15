@@ -127,7 +127,7 @@ export const findBestMove = (gameData: GameData) => {
 
                 newGameData.data[row][column] = SymbolData.O;
 
-                const score = minMax(newGameData, 20, SymbolData.O);
+                const score = minMax(newGameData, 20, -Infinity, Infinity, SymbolData.O);
 
                 if (score > bestScore) {
                     bestScore = score;
@@ -148,7 +148,7 @@ scores[Player.Human] = 1;
 scores[Player.Computer] = -1;
 scores[Player.None] = 0;
 
-const minMax = (gameData: GameData, depth: number, nextSymbol: SymbolData): number => {
+const minMax = (gameData: GameData, depth: number, alpha: number, beta: number, nextSymbol: SymbolData): number => {
 
     if (depth === 0) {
         return 0;
@@ -171,9 +171,13 @@ const minMax = (gameData: GameData, depth: number, nextSymbol: SymbolData): numb
     
                     newGameData.data[row][column] = SymbolData.O;
     
-                    const score = minMax(newGameData, depth - 1, SymbolData.X);
+                    const score = minMax(newGameData, depth - 1, alpha, beta, SymbolData.X);
     
                     bestScore = Math.max(score, bestScore);
+
+                    alpha = Math.max(score, alpha);
+
+                    if (beta <= alpha) break;
                 }
     
             }
@@ -191,9 +195,13 @@ const minMax = (gameData: GameData, depth: number, nextSymbol: SymbolData): numb
     
                     newGameData.data[row][column] = SymbolData.X;
     
-                    const score = minMax(newGameData, depth - 1, SymbolData.O);
+                    const score = minMax(newGameData, depth - 1, alpha, beta, SymbolData.O);
     
                     bestScore = Math.min(score, bestScore);
+
+                    beta = Math.min(score, beta);
+
+                    if (alpha <= beta) break;
                 }
     
             }
