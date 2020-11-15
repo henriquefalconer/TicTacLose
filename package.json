@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "yarn ios --configuration Release --device \"Henrique's iPhone 7\""
   },
   "dependencies": {
     "react": "16.13.1",
