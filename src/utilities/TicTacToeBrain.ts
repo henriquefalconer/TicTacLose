@@ -127,7 +127,7 @@ export const findBestMove = (gameData: GameData) => {
 
                 newGameData.data[row][column] = SymbolData.O;
 
-                const score = minMax(newGameData, 20);
+                const score = minMax(newGameData, 20, SymbolData.O);
 
                 if (score > bestScore) {
                     bestScore = score;
@@ -148,7 +148,7 @@ scores[Player.Human] = 1;
 scores[Player.Computer] = -1;
 scores[Player.None] = 0;
 
-const minMax = (gameData: GameData, depth: number): number => {
+const minMax = (gameData: GameData, depth: number, nextSymbol: SymbolData): number => {
 
     if (depth === 0) {
         return 0;
@@ -158,8 +158,6 @@ const minMax = (gameData: GameData, depth: number): number => {
 
     if (whoWon)
         return scores[whoWon];
-
-    const nextSymbol = findNextSymbol(gameData);
 
     if (nextSymbol === SymbolData.O) {
         let bestScore = -Infinity;
@@ -173,7 +171,7 @@ const minMax = (gameData: GameData, depth: number): number => {
     
                     newGameData.data[row][column] = SymbolData.O;
     
-                    const score = minMax(newGameData, depth - 1);
+                    const score = minMax(newGameData, depth - 1, SymbolData.X);
     
                     bestScore = Math.max(score, bestScore);
                 }
@@ -193,7 +191,7 @@ const minMax = (gameData: GameData, depth: number): number => {
     
                     newGameData.data[row][column] = SymbolData.X;
     
-                    const score = minMax(newGameData, depth - 1);
+                    const score = minMax(newGameData, depth - 1, SymbolData.O);
     
                     bestScore = Math.min(score, bestScore);
                 }
