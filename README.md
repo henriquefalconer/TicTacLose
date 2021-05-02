@@ -16,4 +16,4 @@ Na pasta do projeto, rode
 
 depois, espere alguns minutos e ele aparecerá no seu simulador de iOS.
 
-**Obs.:** para rodar em iOS, é necessário ter baixado as ferramentas do React Native CLI, as ferramentas e o simulador do XCode, assim como um Mac.
+**Obs.:** para rodar em iOS, é necessário ter baixado as ferramentas do React Native CLI, as ferramentas e o simulador do XCode, assim como ter um Mac.
