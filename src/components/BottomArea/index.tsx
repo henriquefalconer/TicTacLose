@@ -1,20 +1,27 @@
 import React from 'react';
 import { useGame } from '../../hooks/useGame';
 
-import { Container, RestartButton, RestartText } from './styles';
+import { Container, Space, Button, TextButton, Text } from './styles';
 
 const BottomArea: React.FC = () => {
 
-    const { whoWon, restart } = useGame();
+    const { whoWon, humanWins, restart, changeMode } = useGame();
 
     return (
         <Container>
-            <RestartButton
+            <Button
                 disabled={!whoWon}
                 onPress={restart}
             >
-                <RestartText>Restart</RestartText>
-            </RestartButton>
+                <Text>Restart</Text>
+            </Button>
+            <Space />
+            <TextButton
+                disabled={!whoWon}
+                onPress={changeMode}
+            >
+                <Text white={true}>{humanWins ? 'Change to TicTacLose' : 'Change to TicTacWin'}</Text>
+            </TextButton>
         </Container>
     );
 }
