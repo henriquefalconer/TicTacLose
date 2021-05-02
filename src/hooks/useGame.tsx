@@ -11,8 +11,10 @@ interface OrientationContextData {
     gameData: GameData;
     currentPlayer: Player;
     whoWon: Player | null;
+    humanWins: boolean;
     onPressXOComponent(positionId: PositionId): void;
     restart(): void;
+    changeMode(): void;
 }
 
 const GameContext = createContext<OrientationContextData>({} as OrientationContextData);
@@ -20,6 +22,8 @@ const GameContext = createContext<OrientationContextData>({} as OrientationConte
 export const GameProvider: React.FC = ({ children }) => {
 
     const [gameData, setGameData] = useState(new EmptyGameData(DIMENSIONS));
+
+    const [humanWins, setHumanWins] = useState(true);
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
 
@@ -76,6 +80,14 @@ export const GameProvider: React.FC = ({ children }) => {
         [setGameData, setCurrentPlayer]
     );
 
+    const changeMode = useCallback(
+        () => {
+            setHumanWins(!humanWins)
+            restart();
+        },
+        [humanWins]
+    );
+
     useEffect(
         () => {
             if (currentPlayer === Player.Computer && !timerRunning && !whoWon) {
@@ -83,7 +95,7 @@ export const GameProvider: React.FC = ({ children }) => {
 
                 console.log({ gameData })
 
-                const bestMove = TicTacToeBrain.findBestMove(gameData);
+                const bestMove = TicTacToeBrain.findBestMove(gameData, humanWins);
 
                 console.log({ bestMove });
 
@@ -108,8 +120,10 @@ export const GameProvider: React.FC = ({ children }) => {
                 gameData,
                 currentPlayer,
                 whoWon,
+                humanWins,
                 onPressXOComponent,
-                restart
+                restart,
+                changeMode
             }}
         >
             {children}

@@ -112,7 +112,12 @@ export const findWhoWon = (gameData: GameData): Player | null => {
     return convertSymbolDataToPlayer(winnerSymbolData);
 };
 
-export const findBestMove = (gameData: GameData) => {
+let scores = {};
+
+export const findBestMove = (gameData: GameData, humanWins: boolean) => {
+    scores[Player.Human] = humanWins ? 1 : -1;
+    scores[Player.Computer] = humanWins ? -1 : 1;
+    scores[Player.None] = 0;
 
     let bestScore = -Infinity;
     let bestPosition: PositionId | undefined;
@@ -141,12 +146,6 @@ export const findBestMove = (gameData: GameData) => {
     return bestPosition;
 
 };
-
-let scores = {};
-
-scores[Player.Human] = -1;
-scores[Player.Computer] = 1;
-scores[Player.None] = 0;
 
 const minMax = (gameData: GameData, maxDepth?: number, depth: number = 0): number => {
 
