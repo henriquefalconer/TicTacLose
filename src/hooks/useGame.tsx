@@ -23,7 +23,7 @@ export const GameProvider: React.FC = ({ children }) => {
 
     const [gameData, setGameData] = useState(new EmptyGameData(DIMENSIONS));
 
-    const [humanWins, setHumanWins] = useState(true);
+    const [humanWins, setHumanWins] = useState(false);
 
     const [currentPlayer, setCurrentPlayer] = useState(Player.Human);
 
